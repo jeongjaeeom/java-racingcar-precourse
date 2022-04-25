@@ -1,5 +1,7 @@
 package racingcar;
 
+import static java.lang.System.out;
+
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarsFactory;
@@ -9,10 +11,9 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class Application {
+
     public static void main(String[] args) {
-        List<Car> cars = getCars();
-        Round round = getRound();
-        RacingGame racingGame = new RacingGame(cars, round);
+        RacingGame racingGame = new RacingGame(getCars(), getRound());
         while (racingGame.isRacing()) {
             racingGame.race();
             ResultView.print(racingGame.getCars());
@@ -24,7 +25,7 @@ public class Application {
         try {
             return CarsFactory.of(InputView.getCarNames());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            out.println(e.getMessage());
             return getCars();
         }
     }
@@ -33,7 +34,7 @@ public class Application {
         try {
             return new Round(InputView.getRounds());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            out.println(e.getMessage());
             return getRound();
         }
     }
