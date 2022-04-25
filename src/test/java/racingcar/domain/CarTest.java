@@ -12,7 +12,7 @@ public class CarTest {
     void givenNumber_shouldMoveForward() {
         Car car = new Car("tesla");
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -20,6 +20,6 @@ public class CarTest {
     void givenNumber_shouldStop() {
         Car car = new Car("tesla");
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 }

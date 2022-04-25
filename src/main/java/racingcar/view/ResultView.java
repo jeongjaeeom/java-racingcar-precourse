@@ -5,6 +5,7 @@ import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Position;
 
 public class ResultView {
 
@@ -19,16 +20,16 @@ public class ResultView {
     }
 
     public static void printWinner(List<Car> cars) {
-        out.println("최종 우승자: " + String.join(", ", toWinnerNames(cars)));
+        out.println("최종 우승자: " + String.join(WINNER_DELIMITER, toWinnerNames(cars)));
     }
 
     private static void printCar(Car car) {
         out.println(car.getName() + " : " + toGraphicDistance(car.getPosition()));
     }
 
-    private static String toGraphicDistance(int position) {
+    private static String toGraphicDistance(Position position) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < position.getPosition(); i++) {
             sb.append(DISTANCE_MARK);
         }
         return sb.toString();

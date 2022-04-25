@@ -30,7 +30,7 @@ public class RacingGame {
     }
 
     public List<Car> getWinners() {
-        return cars.getWinner();
+        return cars.getWinners();
     }
 
 }

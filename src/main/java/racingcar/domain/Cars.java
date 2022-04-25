@@ -19,26 +19,30 @@ public class Cars {
         }
     }
 
-    public List<Car> getWinner() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
-            }
-        }
+    public List<Car> getWinners() {
+        return getWinners(getMaxPosition());
+    }
 
+    private List<Car> getWinners(Position maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (maxPosition == car.getPosition()) {
+            if (maxPosition.equals(car.getPosition())) {
                 winners.add(car);
             }
         }
         return winners;
     }
 
+    private Position getMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(this.cars);
     }
-
 
 }
