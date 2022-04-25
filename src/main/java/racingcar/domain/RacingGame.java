@@ -5,24 +5,24 @@ import java.util.List;
 public class RacingGame {
 
     private final Cars cars;
-    private int rounds;
+    private Round round;
 
-    public RacingGame(String carNames, String rounds) {
-        this(carNames, parseInt(rounds));
+    public RacingGame(String carNames, Round round) {
+        this(CarsFactory.of(carNames), round);
     }
 
-    public RacingGame(String carNames, int rounds) {
-        this.cars = new Cars(CarsFactory.of(carNames));
-        this.rounds = rounds;
+    public RacingGame(List<Car> cars, Round round) {
+        this.cars = new Cars(cars);
+        this.round = round;
     }
 
     public void race() {
         cars.move();
-        finishPerRound();
+        round.finishPerRound();
     }
 
     public boolean isRacing() {
-        return this.rounds > 0;
+        return !round.isFinished();
     }
 
     public List<Car> getCars() {
@@ -33,15 +33,4 @@ public class RacingGame {
         return cars.getWinner();
     }
 
-    private void finishPerRound() {
-        this.rounds--;
-    }
-
-    private static int parseInt(String rounds) {
-        try {
-            return Integer.parseInt(rounds);
-        } catch (RuntimeException e) {
-            throw new IllegalArgumentException("[ERROR] 자동차 게임 횟수는 숫자만 가능합니다.");
-        }
-    }
 }
