@@ -18,7 +18,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차 전진")
     void givenNumber_shouldMoveForward() {
-        Car car = new Car("tesla", 3);
+        Car car = new Car("tesla");
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -26,7 +26,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차 멈춤")
     void givenNumber_shouldStop() {
-        Car car = new Car("tesla", 3);
+        Car car = new Car("tesla");
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
