@@ -4,7 +4,7 @@ public class Car {
 
     public static final int MOVE_FORWARD_NUMBER = 4;
 
-    private final String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
@@ -12,10 +12,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        if (name == null || name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 자동차명은 5글자를 초과할 수 없습니다.");
-        }
-        this.name = name;
+        this.name = new CarName(name);
         this.position = position;
     }
 
@@ -30,6 +27,6 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 }
